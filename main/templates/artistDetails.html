@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Details</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+    <style>
+        #artists-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        li {
+            list-style-type: none;
+        }
+     
+        .name{
+           text-align: center;
+        }
+        .det {
+            border: 2px solid #333;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+           
+        }
+        .sec{
+            font-weight: bold;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: medium;
+        }
+       
+    </style>
+</head>
+
+<body style="background: linear-gradient(to bottom right, #b1a2f3, #f0aa81);">
+    <section id="artists-section">
+        <div class="sec">
+                <h2 class="name">{{.Artists.Name}}</h2>
+                <img src="{{.Artists.Image}}" alt="{{.Artists.Name}}">
+                <p>Creation Date: {{.Artists.CreationDate}}</p>
+                <p>First Album: {{.Artists.FirstAlbum}}</p>
+                <p>Members:</p>
+                <ul>
+                    {{range .Artists.Members}}
+                    <li>{{.}}</li>
+                    {{end}}
+                </ul>
+
+            </div>
+<div class="det">
+        <h2>Concerts</h2>
+        <ul>
+            <li>
+                <strong>Dates and Locations:</strong><br>
+                <ul>
+                    {{range $location, $dates := .Relation.DatesLocation}}
+                    <li>
+                        <strong>{{$location}}:</strong> {{range $index, $date := $dates}}{{if $index}},
+                        {{end}}{{$date}}{{end}}
+                    </li>
+                    {{end}}
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    </section>
+</body>
+
+</html>

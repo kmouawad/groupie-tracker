@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Groupie Tracker</title>
+    <!-- Include CSS files here -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <!-- <style>
+      .image {
+        border: 10px ridge black;
+      }
+
+      .artists {
+        display: flex;
+        /* grid-template-columns: auto auto auto auto auto auto auto auto; */
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        
+        /* margin-right: 20px; */
+        /* margin-left: 20px; */
+        /* gap: 80px; */
+      }
+
+      .artist {
+        /* display: flex; */
+        /* justify-content: center; */
+        /* align-items: center; */
+        /* flex-direction: column; */
+        margin: 20px;
+        transition: transform 0.3s ease
+        
+      }
+      .artist:hover img {
+        transform: scale(1.1);
+      }
+      .header {
+        text-align: center;
+      }
+
+      .head {
+        text-align: center;
+      }
+      .artistName {
+        background-color: #e7f1ac;
+        border: 1px solid #333;
+        padding: 5px;
+        border-radius: 10px;
+        margin: 15px;
+        text-align: center;
+
+      }
+    </style> -->
+  </head>
+
+  <body style="background: linear-gradient(to bottom right, #b1a2f3, #f0aa81);">
+    <header>
+      <h1 class="header">Groupie Tracker</h1>
+    </header>
+    <main>
+      <section id="artists-section">
+        <h2 class="head">Artists</h2>
+
+        <!-- <form action="/" method="post" onsubmit="return submitForm()">
+        <input type="text" placeholder="Search..." name="Name">
+        <input type="submit" value="Search">x
+      </form> -->
+
+        <div class="artists">
+          <!-- . means all the data i have so its the array -->
+          {{range .}}
+          <div class="artist">
+            <h3 class="artistName">{{.Name}}</h3>
+            <!-- dynamic route a route that changes -->
+            <a href="/artistDetails.html?id={{.ID}}">
+              <img src="{{.Image}}" alt="{{.Name}}" class="image" />
+            </a>
+          </div>
+          <br />
+          {{end}}
+        </div>
+      </section>
+    </main>
+    <!-- <footer>
+      <p>&copy; 2024 Groupie Trackers. All rights reserved.</p>
+    </footer> -->
+    <script>
+      // Check if form data was submitted previously
+      window.onload = function() {
+          if (window.history.replaceState) {
+              window.history.replaceState(null, null, window.location.href);
+          }
+      };
+  
+      // Submit form asynchronously
+      
+  </script>
+  
+  </body>
+</html>
