@@ -30,7 +30,12 @@ func main() {
 	mux.Handle("/assets/", http.StripPrefix("/assets", fs))
 	mux.HandleFunc("/", generateHandler)
 	mux.HandleFunc("/artistDetails.html", artistDetailsHandler)
+	mux.HandleFunc("/about.html", aboutHandler)
 	log.Fatal(http.ListenAndServe(string(portNumber), mux))
+}
+
+func aboutHandler(w http.ResponseWriter, r *http.Request) {
+	tpl.ExecuteTemplate(w, "about.html", "")
 }
 
 func generateHandler(w http.ResponseWriter, r *http.Request) {
